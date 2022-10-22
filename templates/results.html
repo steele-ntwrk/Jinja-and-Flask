@@ -12,7 +12,7 @@
     {% block content %}
     <h1> {{ title }} </h1>
     <u1>
-        {% for device in devices %}
+        {% for device in devices|sort(attribute="device")|sort(attribute="avail", reverse=true) %}
             <li>
                 {% if device.avail >= 99 %} 😃 {% else %} 😐 {% endif %}
                 <em>{{device.name }}</em> {{ device.avail }}/{{ max_avail }}
@@ -21,4 +21,5 @@
     </u1>
     {% endblock content %}
 </body>
+
 </html>
